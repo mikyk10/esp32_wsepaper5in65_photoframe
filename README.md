@@ -9,6 +9,7 @@ Ever wanted to own a digital photo frame that periodically updates its content w
 
 - Color ePaper
 - WiFi connectivity
+- Landscape orientation only
 - Powered by Rechargable Battery (Optional)
 
 ## Repository Contents
@@ -21,15 +22,16 @@ This project consists of following 3 parts:
 
 ### Helper Web API (HWA)
 
-Randomly picks an image and transforms it into vendor specific stream of binary data after image pre-processing. This can match up image aspect ratio, dimension, gamma, color..etc with the ePaper's hardware specification.
+Randomly picks an landscape image and transforms it into vendor specific stream of binary data after image pre-processing. This can match up image orientation, aspect ratio, dimension, gamma, color..etc with the ePaper's hardware specification.
 
+The vendor specific ePaper encoding is described here:
 https://www.waveshare.com/wiki/5.65inch_e-Paper_Module_(F)_Manual#Picture_Production
 
 ### Firmware
 
-Core software to display images on the ePaper. It sends encoded image stream to the ePaper after connecting your WiFi network. It then goes into deep-sleep mode for certain period of time. 
+Core software to display images on the ePaper. It transfers encoded data to the ePaper after getting data via WiFi. It then goes into deep-sleep mode for certain period of time.
 
-Currently it does not have a fancy Web User-Interface to manage any configurations. WiFi SSID, password and HWA URL are statically compiled into the firmware binary. Everytime you change the configuration, flash the MCU.
+Currently it does not have a fancy Web User-Interface to manage any configuration; including WiFi SSID, password and HWA URL are statically compiled into the firmware. Everytime you change the configuration, flash the MCU. 
 
 By default, TLS handshake is disabled as it might drain the battery. To protect your privacy, you should place the HWA and MCU on the same private network so that your pictures will never go through internet unencrypted.
 
@@ -60,6 +62,10 @@ https://u.easyeda.com/account/user/projects/index/detail?project=549b435850194f8
 
 You need basic electronics toolsets.
 
+### Build Instruction
+
+The MCU has a red power status LED which constantly eats about 0000mA, shortens the battery life. It's directly connected to VCC so it must be physically removed if want to disable it. You can break off the LED using a plier. Be sure not to damage any other component.
+
 ## Contribution
 
 Contribution is always welcome. You may fork this repository, change whatever you want and send me a PR.
@@ -70,17 +76,13 @@ Contribution is always welcome. You may fork this repository, change whatever yo
 
 ## Disclaimer
 
-This is a currently-under-development-PoC-project. I am not taking any responsibility of any damage of using this code, PCB design. technical support for building this. 
+This project is a currently-under-development-PoC-project. It is not production ready state Some code is crude and a lot of work still should be done. So use of this artifact is at your own risk. 
+You may optionally use Li-Po battery cell which must be properly handled or it may explode, cause serious damages to you. Please be sure what is going to happen before doing anything with battery and its peripherals.
 
-I provide above information as a reference for building a designing PCB, program code. Using them in your project may require some research of one's own, potentially fixing any issues or design flaws if they exist. I do not guarantee you this repository can satisfy 100% of your needs.
-
-This project uses Li-Po battery cell which must be properly handled or it may explode, cause serious damages to you.
-Please know what you're going to do before doing anything with it.
+I provide those information as a reference for building a designing PCB, program code. Using them in your project may require some research of one's own, potentially fixing any issues or design flaws if they exist.
 
 
-### Tips
 
-The MCU has a red power status LED which constantly eats about 0000mA, shortens the battery life. It's directly connected to VCC so it must be physically removed if want to disable it. You can break off the LED using a plier. Be sure not to damage any other component.
 
 
 
