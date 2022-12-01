@@ -41,8 +41,8 @@ TLS handshake is disabled by default as it drain the battery a little more. To p
 
 Battery power unit for MCU. It has battery charging, protection, voltage regulation circuit for a 18650 Li-Po battery cell.
 
-PCB design is available at EasyEDA. 
-https://u.easyeda.com/account/user/projects/index/detail?project=549b435850194f8fa61f18e4934bcfd8&folder=all
+PCB design is available at oshwlab.com. 
+https://oshwlab.com/mikyk10/buep-esp32-db
 
 ## How to Build
 
