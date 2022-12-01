@@ -3,7 +3,9 @@ ESP32_WSEPaper-5in65_PhotoFrame
 
 A DIY battery powered digital photo frame with color e-Paper module that periodically updates its content via Wi-Fi.
 
-![](https://via.placeholder.com/720x480.png?text=PhotoFrame)
+![IMG_2530](https://user-images.githubusercontent.com/4987502/204963890-58a7cb1a-2834-4fc9-9ddb-c6e171e2e052.jpg)
+![IMG_2531](https://user-images.githubusercontent.com/4987502/204963906-abf82610-83c6-45b9-9d1e-babef5a6ed39.jpg)
+
 
 ### Features
 
