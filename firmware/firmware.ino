@@ -62,10 +62,15 @@ void setup() {
 
   // init ePaper
   EPD_initSPI();
-  EPD_5IN65F_init();
+  Serial.println("[SPI] init");
 
-  Serial.println("[disp] init");
-   
+  // clear the display 
+  digitalWrite(LED, HIGH);
+  Serial.println("[disp] Clearing...");
+  EPD_5IN65F_init();
+  EPD_5IN65F_Clear();
+  digitalWrite(LED, LOW);
+
   // Connect to WiFi
   Serial.print(F("[net] Connecting WiFi: "));
   WiFi.begin(WiFi_SSID, WiFi_PASSWD, 6);
@@ -82,12 +87,6 @@ void setup() {
         // Long Blink LED 5 times for WiFi failure and go to deepsleep
         blinkLED(5, 1000);
 
-        // clear the display 
-        digitalWrite(LED, HIGH);
-        EPD_5IN65F_Clear();
-        EPD_5IN65F_Sleep();
-        digitalWrite(LED, LOW);
-
         deepSleep(DEFAULT_TIME_TO_SLEEP);
         return;
       }
@@ -96,7 +95,7 @@ void setup() {
       delay(100);
     }
   }
-
+  
   //IPAddress serverIp MDNS.queryHost("rpi4-miky.local")
   //Serial.println(serverIp.toString());
 
@@ -157,6 +156,8 @@ void setup() {
         // get tcp stream
         wifiStream = httpClient->getStreamPtr();
         
+        EPD_5IN65F_init();
+
         Serial.printf("[disp] Transferring data: ");
         
         uint8_t buff[BUF_SIZE];
